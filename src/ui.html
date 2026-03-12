@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; padding: 16px; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    textarea { width: 100%; height: 150px; font-family: monospace; padding: 8px; box-sizing: border-box; }
+    .input-group { display: flex; flex-direction: column; gap: 4px; }
+    input[type="text"] { padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+    .row { display: flex; gap: 8px; }
+    button { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; background: #18A0FB; color: white; font-weight: bold; }
+    button.secondary { background: #E5E5E5; color: #333; }
+    #preview { background: #f5f5f5; padding: 8px; border-radius: 4px; font-size: 12px; white-space: pre-wrap; max-height: 150px; overflow-y: auto; }
+    .error { color: red; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="input-group">
+    <label for="collectionName">Collection Name</label>
+    <input type="text" id="collectionName" value="tokens" />
+  </div>
+
+  <div class="input-group">
+    <label for="tokensInput">Tokens (path/to/token: value)</label>
+    <textarea id="tokensInput" placeholder="space/8: 8&#10;color/brand/500: #00ff00"></textarea>
+  </div>
+
+  <div class="row">
+    <button id="btnParse">Parse & Preview</button>
+    <button id="btnCreate">Create Variables</button>
+  </div>
+  
+  <div class="row">
+    <button id="btnExportJson" class="secondary">Export JSON</button>
+    <button id="btnExportYaml" class="secondary">Export YAML</button>
+  </div>
+
+  <div id="preview"></div>
+
+  <script>
+    const tokensInput = document.getElementById('tokensInput');
+    const collectionName = document.getElementById('collectionName');
+    const previewDiv = document.getElementById('preview');
+
+    document.getElementById('btnParse').onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'PARSE', text: tokensInput.value } }, '*');
+    };
+
+    document.getElementById('btnCreate').onclick = () => {
+      parent.postMessage({ 
+        pluginMessage: { type: 'CREATE', text: tokensInput.value, collection: collectionName.value } 
+      }, '*');
+    };
+
+    onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (msg.type === 'PREVIEW_DATA') {
+        previewDiv.textContent = JSON.stringify(msg.data, null, 2);
+        previewDiv.className = '';
+      } else if (msg.type === 'ERROR') {
+        previewDiv.textContent = msg.errors.join('\n');
+        previewDiv.className = 'error';
+      } else if (msg.type === 'SUCCESS') {
+        previewDiv.textContent = msg.message;
+        previewDiv.className = '';
+      }
+    };
+  </script>
+</body>
+</html>
