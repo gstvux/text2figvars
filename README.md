@@ -110,16 +110,16 @@ Para rodar ou contribuir com este plugin localmente:
 
   
 
-1. **Clone o repositório:**Bash
+1. **Clone o repositório:**
 
 ```bash
 git clone <https://github.com/SEU_USUARIO/text2figvars.git> cd text2figvars
 ```
-2. **Instale as dependências:**Bash
+2. **Instale as dependências:**
 ```bash
 npm install
 ```
-3. **Rode o script de build em modo watch:**Bash
+3. **Rode o script de build em modo watch:**
 ```bash
 npm run watch
 ```
