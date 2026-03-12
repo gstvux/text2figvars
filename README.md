@@ -113,7 +113,7 @@ Para rodar ou contribuir com este plugin localmente:
 1. **Clone o repositório:**
 
 ```bash
-git clone <https://github.com/SEU_USUARIO/text2figvars.git> cd text2figvars
+git clone https://github.com/gstvux/text2figvars cd text2figvars
 ```
 2. **Instale as dependências:**
 ```bash
