@@ -1,25 +1,25 @@
-# Token Paste to Variables 🎨
+# text2figvars 🎨
 
-[cite_start]Cole uma lista de tokens em texto simples e gere automaticamente Figma Variables tipadas, com exportação opcional para JSON e YAML. [cite: 27]
+Cole uma lista de tokens em texto simples e gere automaticamente Figma Variables tipadas, com exportação opcional para JSON e YAML. 
 
-[cite_start]O **Token Paste to Variables** permite que designers e desenvolvedores criem rascunhos de design tokens em texto puro e os convertam instantaneamente em Figma Variables locais tipadas. [cite: 29] Esqueça o trabalho manual e repetitivo — apenas escreva, valide e crie.
+O **text2figvars** permite que designers e desenvolvedores criem rascunhos de design tokens em texto puro e os convertam instantaneamente em Figma Variables locais tipadas.  Esqueça o trabalho manual e repetitivo — apenas escreva, valide e crie.
 
 ## ✨ Funcionalidades
 
-- [cite_start]**Inferência Automática de Tipo:** Detecta automaticamente `BOOLEAN`, `FLOAT`, `COLOR` e `STRING` com base no valor inserido. [cite: 5]
-- [cite_start]**Suporte a Aliases:** Referencie outros tokens facilmente (suporta alias curto e expandido). [cite: 7, 30]
-- [cite_start]**Parsing Inteligente:** Ignora linhas vazias e comentários iniciados com `#`. [cite: 5]
-- [cite_start]**Preview na UI:** Verifique os tokens processados antes da criação. [cite: 29]
-- [cite_start]**Opções de Exportação:** Exporte instantaneamente os tokens validados para os formatos `JSON` ou `YAML`. [cite: 29]
-- [cite_start]**Criação Segura:** Cria uma nova _Variable Collection_ caso não exista [cite: 18][cite_start], e alerta sobre conflitos de nomenclatura sem sobrescrever variáveis existentes. [cite: 32]
+- **Inferência Automática de Tipo:** Detecta automaticamente `BOOLEAN`, `FLOAT`, `COLOR` e `STRING` com base no valor inserido. 
+- **Suporte a Aliases:** Referencie outros tokens facilmente (suporta alias curto e expandido).
+- **Parsing Inteligente:** Ignora linhas vazias e comentários iniciados com `#`. 
+- **Preview na UI:** Verifique os tokens processados antes da criação. 
+- **Opções de Exportação:** Exporte instantaneamente os tokens validados para os formatos `JSON` ou `YAML`. 
+- **Criação Segura:** Cria uma nova _Variable Collection_ caso não exista , e alerta sobre conflitos de nomenclatura sem sobrescrever variáveis existentes. 
 
 ## 📖 Como Usar (Sintaxe)
 
-[cite_start]Os tokens são definidos usando o formato simples `caminho: valor`. [cite: 5] [cite_start]O caminho se tornará o nome da variável no Figma. [cite: 8]
+Os tokens são definidos usando o formato simples `caminho: valor`.  O caminho se tornará o nome da variável no Figma. 
 
 **1. Tipos Literais**
 
-[cite_start]O plugin lê o valor e deduz o tipo correto: [cite: 5]
+O plugin lê o valor e deduz o tipo correto: 
 
 `# BOOLEAN (true ou false) feature/newNavbar: true
 
